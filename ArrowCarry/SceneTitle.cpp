@@ -5,7 +5,8 @@
 #include <cassert>
 
 SceneTitle::SceneTitle():
-m_handle(-1)
+m_handle(-1),
+m_handle2(-1)
 {
 }
 
@@ -18,6 +19,8 @@ void SceneTitle::Init()
 	// グラフィックの読み込みをする
 	m_handle = LoadGraph("data/Title.png");
 	assert(m_handle != -1);
+	m_handle2 = LoadGraph("data/block1.jpg");
+	assert(m_handle2 != -1);
 }
 
 void SceneTitle::Update()
@@ -31,7 +34,10 @@ void SceneTitle::Update()
 
 void SceneTitle::Draw()
 {
+	// 画面全体を紫で塗りつぶす
+	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(206, 128, 255), true);
 	// タイトル画面の描画
-	DrawGraph(Game::kScreenWidth, Game::kScreenHeight, m_handle, false);
+	DrawGraph(0, 0, m_handle2, true);
+	DrawGraph(0, 0, m_handle, true);
 	DrawFormatString(0, 0, 0xffffff, "SceneTitle");// いまタイトルシーンにいるよー
 }

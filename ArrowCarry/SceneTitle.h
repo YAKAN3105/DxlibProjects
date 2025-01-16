@@ -13,5 +13,6 @@ private:
 
 	// グラフィックのハンドル
 	int m_handle;
+	int m_handle2;
 };
 

@@ -13,7 +13,7 @@ public:
 
 private:
 	int m_handle1;
-	MapChip* m_mapChips[kChipIndexY][kChipIndexX];
+	//MapChip* m_mapChips[kChipIndexY][kChipIndexX];
 
 };
 

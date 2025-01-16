@@ -80,7 +80,7 @@ void Map::Draw()
 	{
 		for (int x = 0; x < kChipIndexX; x++)
 		{
-			MapChip& mapChip = m_mapChips[y][x];
+		//	MapChip& mapChip = m_mapChips[y][x];
 		}
 	}
 

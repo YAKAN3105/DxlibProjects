@@ -20,23 +20,23 @@ void Map::Update()
 
 void Map::Draw()
 {
-	//ƒ}ƒbƒvƒ`ƒbƒv‘S‚Ä‚ð•`‰æ
-	for (auto temp : Mapdata::mapData1)
+	for (int i = 0; i < Mapdata::kChipIndexX; i++)//s
 	{
-		/*•`‚­‰æ‘œ‚Ìƒnƒ“ƒhƒ‹*/
-		int tempHandle=-1;
+		for (int s = 0; s < Mapdata::kChipIndexY; s++)//—ñ
+		{
+			/*•`‚­‰æ‘œ‚Ìƒnƒ“ƒhƒ‹*/
+			int tempHandle = -1;
 
-		/*•`‚­‰æ‘œ‚Ì‘I‘ð*/
-		//•`‚©‚È‚¢ê‡‚Íƒ‹[ƒv‚ð”²‚¯‚é
-		if (*temp == -1) { break; }
-		//n”Ô‚Ì‰æ‘œ‚Ìƒnƒ“ƒhƒ‹‚ðŽæ“¾
-		if (*temp == 1) { tempHandle = _blockHandle; }
-		if (*temp == 2) {}
-		if (*temp == 7) {}
-		if (*temp == 67) {}
-		if (*temp == 82) {}
+			/*‰æ‘œ‚Ì•`‰æ*/
+			if (Mapdata::mapData1[s][i] == -1) { continue; }
+			if (Mapdata::mapData1[s][i] == 1) {  }
+			if (Mapdata::mapData1[s][i] == 2) { tempHandle = LoadGraph("block.jpg"); }
+			if (Mapdata::mapData1[s][i] == 7) {}
+			if (Mapdata::mapData1[s][i] == 67) {}
+			if (Mapdata::mapData1[s][i] == 82) {}
 
-		/*‰æ‘œ‚Ì•`‰æ*/
-		DrawGraph(100,100,tempHandle,true);
+			/*‰æ‘œ‚Ì•`‰æ*/
+			DrawGraph(i * 32, s * 32, tempHandle, true);
+		}
 	}
 }
