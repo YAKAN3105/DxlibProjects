@@ -13,5 +13,8 @@ public:
 	void Draw();
 private:
 	int _blockHandle;
+	int _ceilingHandle;
+	int _wallHandle;
+	int _backgroundHandle;
 };
 
