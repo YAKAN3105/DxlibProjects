@@ -16,5 +16,6 @@ private:
 	int _ceilingHandle;
 	int _wallHandle;
 	int _backgroundHandle;
+	int _goalHandle;
 };
 

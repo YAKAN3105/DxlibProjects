@@ -29,6 +29,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 		// ‚±‚±‚ÉƒQ[ƒ€‚Ìˆ—‚ğ‘‚­
+		// ‰æ–Ê‘S‘Ì‚ğ‡‚Å“h‚è‚Â‚Ô‚·
+		DrawBox(0, 0, 1280, 720, GetColor(206, 128, 255), true);
 		scene.Draw();
 
 
