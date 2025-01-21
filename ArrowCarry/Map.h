@@ -1,19 +1,22 @@
 #pragma once
-class MapChip;
+#include "MapData.h"
+#include "DxLib.h"
 
 class Map
 {
 public:
 	Map();
-	~Map();
+	virtual ~Map();
 
 	void Init();
 	void Update();
 	void Draw();
-
 private:
-	int m_handle1;
-	//MapChip* m_mapChips[kChipIndexY][kChipIndexX];
-
+	int _blockHandle;
+	int _ceilingHandle;
+	int _wallHandle;
+	int _backgroundHandle;
+	int _goalHandle;
 };
+
 

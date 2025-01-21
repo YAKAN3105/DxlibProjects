@@ -1,4 +1,5 @@
 #include "Map.h"
+#include <cassert>
 
 Map::Map()
 {
@@ -40,7 +41,9 @@ void Map::Draw()
 			if (Mapdata::mapData1[s][i] == 82) { tempHandle = LoadGraph("background.jpg"); }
 
 			/*‰æ‘œ‚Ì•`‰æ*/
+			assert(tempHandle != -1);
 			DrawGraph(i * 32, s * 32, tempHandle, true);
 		}
 	}
+	
 }

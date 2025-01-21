@@ -20,7 +20,7 @@ namespace
 	// アニメーション1コマのフレーム数
 	constexpr int kSingleAnimFrame = 4;
 
-	constexpr float kPlayerPosX = 100;
+	constexpr float kPlayerPosX = 250;
 	constexpr float kPlayerPosY = 672;
 
 	constexpr float kPlayerHitWidth = 40;

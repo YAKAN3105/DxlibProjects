@@ -1,5 +1,6 @@
 #pragma once
 #include "SceneBase.h"
+#include "Map.h"
 
 class Map;
 class Player;
@@ -34,5 +35,5 @@ private:
 	// ‰Šú‰»
 	Player* m_pPlayer;
 	Arrow* m_pArrow;
-	Map* m_pMap;
+	Map _map;
 };

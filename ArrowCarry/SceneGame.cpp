@@ -8,6 +8,7 @@
 #include "Rect.h"
 #include "game.h"
 
+
 namespace
 {
 	
@@ -17,7 +18,7 @@ SceneGame::SceneGame()
 {
 	m_pPlayer= new Player();
 	m_pArrow = new Arrow();
-	m_pMap = new Map();
+	
 }
 
 SceneGame::~SceneGame()
@@ -28,14 +29,14 @@ void SceneGame::Init()
 {
 	m_pPlayer->Init();
 	m_pArrow->Init();
-	m_pMap->Init();
+	_map.Init();
 }
 
 void SceneGame::Update()
 {
 	m_pPlayer->Update();
 	m_pArrow->Update();
-	m_pMap->Update();
+
 
 
 	//m_pMap->CheckHit();
@@ -55,7 +56,7 @@ void SceneGame::Draw()
 {
 	// 画面全体を紫で塗りつぶす
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(206, 128, 255), true);
-	m_pMap->Draw();
+	_map.Draw();
 	m_pArrow->Draw();
 	m_pPlayer->Draw();
 	DrawFormatString(0, 0, 0xffffff, "SceneGame");// いまゲームシーンにいるよー

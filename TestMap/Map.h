@@ -2,6 +2,7 @@
 #include "MapData.h"
 #include "DxLib.h"
 
+
 class Map
 {
 public:
