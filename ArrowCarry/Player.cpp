@@ -186,13 +186,12 @@ void Player::InitVelocity()
 	m_velocity = zero;
 }
 
-void Player::ChangePosMapHit()
+void Player::CheckPosMapHit(const Map& map)
 {
-	//速度を止める
-	InitVelocity();
-	//1フレーム前の位置に戻す
-	m_pos = m_backPos;
-	m_isRun = true;
+	// マップの当たり判定
+	Rect mapRect = map.GetRect();
+	Rect playerRect = GetRect();
+	
 }
 
 void Player::Draw()

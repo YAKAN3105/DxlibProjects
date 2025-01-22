@@ -27,7 +27,7 @@ public:
 	
 	// ‘¬“x‚ð0‚É‚·‚é
 	void InitVelocity(); 
-	void ChangePosMapHit();
+	void CheckPosMapHit(const Map& map);
 
 
 
