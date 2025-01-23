@@ -12,13 +12,19 @@ public:
 	Player();
 	~Player();
 
+	//プレイヤーの情報を取得する
+	float GetLeft() const;
+	float GetTop() const;
+	float GetRight() const;
+	float GetBottom() const;
+
 	void Init();
 	void End();
 	void Update();
 	void AnimationUpdate();
 	void Draw();
 
-	Rect GetRect() const { return m_rect; }
+	Rect GetRect() const { return m_playerRect; }
 
 	void IsHitArrow();
 	
@@ -27,7 +33,7 @@ public:
 	
 	// 速度を0にする
 	void InitVelocity(); 
-	void CheckPosMapHit(const Map& map);
+	void CheckPosMapHit(Map* map);
 
 
 
@@ -63,9 +69,7 @@ private:
 
 	int m_playerNowPos;
 
-	Rect m_rect;
-
-	
+	Rect m_playerRect;
 
 };
 

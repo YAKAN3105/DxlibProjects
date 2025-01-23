@@ -1,8 +1,10 @@
 #include "Map.h"
 #include <cassert>
+#include"Player.h"
 
-Map::Map()
+Map::Map(Player* pPlayer)
 {
+	m_player = pPlayer;
 }
 
 Map::~Map()
@@ -20,29 +22,82 @@ void Map::Init()
 
 void Map::Update()
 {
+	m_isGroundHit = false;
+	m_isBlockHit = false;
+	m_isGoalHit = false;
+	m_isWallHit = false;
 
+	for (int y = 0; y < Mapdata::kChipIndexY; y++)//行
+	{
+		for (int x = 0; x < Mapdata::kChipIndexX; x++)//列
+		{
+			int chipNo = Mapdata::mapData1[y][x];
+
+			int chipLeft = x * 32;
+			int chipTop = y * 32;
+			int chipRight = chipLeft + 32;
+			int chipBottom = chipTop + 32;
+			// 絶対当たらない場合　trueになる(一つでもtrueなら当っていない)
+			bool isPlayerLeft =(m_player->GetRight() < chipLeft);
+			bool isPlayerTop = (m_player->GetBottom() < chipTop);
+			bool isPlayerRight = (chipRight < m_player->GetLeft());
+			bool isPlayerBottom =  (chipBottom < m_player->GetTop());
+
+			//地面に当たった時の処理
+			if (chipNo == 1)
+			{
+				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
+				{
+					m_isGroundHit = true;
+				}
+			}
+			if (chipNo == 2)
+			{
+				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
+				{
+					m_isBlockHit = true;
+				}
+			}
+			if (chipNo == 7)
+			{
+				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
+				{
+					m_isGoalHit = true;
+				}
+			}
+			if (chipNo == 67)
+			{
+				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
+				{
+					m_isWallHit = true;
+				}
+			}
+		}
+	}
 }
 
 void Map::Draw()
 {
-	for (int i = 0; i < Mapdata::kChipIndexX; i++)//行
+	for (int y = 0; y < Mapdata::kChipIndexX; y++)//行
 	{
-		for (int s = 0; s < Mapdata::kChipIndexY; s++)//列
+		for (int x = 0; x < Mapdata::kChipIndexY; x++)//列
 		{
 			/*描く画像のハンドル*/
 			int tempHandle = -1;
 
 			/*画像の描画*/
-			if (Mapdata::mapData1[s][i] == -1) { continue; }
-			if (Mapdata::mapData1[s][i] == 1) { tempHandle = _ceilingHandle; }
-			if (Mapdata::mapData1[s][i] == 2) { tempHandle = _blockHandle; }
-			if (Mapdata::mapData1[s][i] == 7) { tempHandle = _goalHandle; }
-			if (Mapdata::mapData1[s][i] == 67) { tempHandle = _wallHandle; }
-			if (Mapdata::mapData1[s][i] == 82) { tempHandle = _backgroundHandle; }
+			if (Mapdata::mapData1[x][y] == -1) { continue; }
+			if (Mapdata::mapData1[x][y] == 1) { tempHandle = _ceilingHandle; }
+			if (Mapdata::mapData1[x][y] == 2) { tempHandle = _blockHandle; }
+			if (Mapdata::mapData1[x][y] == 7) { tempHandle = _goalHandle; }
+			if (Mapdata::mapData1[x][y] == 67) { tempHandle = _wallHandle; }
+			if (Mapdata::mapData1[x][y] == 82) { tempHandle = _backgroundHandle; }
 
 			/*画像の描画*/
 			assert(tempHandle != -1);
-			DrawGraph(i * 32, s * 32, tempHandle, true);
+			DrawGraph(y * 32, x * 32, tempHandle, true);
+			DrawFormatString(y * 32, x * 32, 0xffffff, "%d", Mapdata::mapData1[x][y]);
 		}
 	}
 }
+

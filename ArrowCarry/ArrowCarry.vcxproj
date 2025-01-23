@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="music.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneResult.cpp" />
@@ -149,9 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="button.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapData.h" />
+    <ClInclude Include="music.h" />
     <ClInclude Include="MyKeyInput.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />

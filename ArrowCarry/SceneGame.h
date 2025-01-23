@@ -6,6 +6,7 @@ class Map;
 class Player;
 class Arrow;
 class Rect;
+class button;
 
 class SceneGame : public SceneBase
 {
@@ -35,5 +36,6 @@ private:
 	// ‰Šú‰»
 	Player* m_pPlayer;
 	Arrow* m_pArrow;
-	Map _map;
+	Map* _map;
+	button* m_button;
 };

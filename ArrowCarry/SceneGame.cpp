@@ -7,7 +7,7 @@
 #include "map.h"
 #include "Rect.h"
 #include "game.h"
-
+#include "button.h"
 
 namespace
 {
@@ -18,7 +18,8 @@ SceneGame::SceneGame()
 {
 	m_pPlayer= new Player();
 	m_pArrow = new Arrow();
-	
+	_map = new Map(m_pPlayer);
+	m_button = new button();
 }
 
 SceneGame::~SceneGame()
@@ -29,13 +30,16 @@ void SceneGame::Init()
 {
 	m_pPlayer->Init();
 	m_pArrow->Init();
-	_map.Init();
+	_map->Init();
+	m_button->Init();
 }
 
 void SceneGame::Update()
 {
 	m_pPlayer->Update();
 	m_pArrow->Update();
+	_map->Update();
+	m_button->Update();
 
 
 
@@ -56,9 +60,10 @@ void SceneGame::Draw()
 {
 	// 画面全体を紫で塗りつぶす
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(206, 128, 255), true);
-	_map.Draw();
+	_map->Draw();
 	m_pArrow->Draw();
 	m_pPlayer->Draw();
+	m_button->Draw();
 	DrawFormatString(0, 0, 0xffffff, "SceneGame");// いまゲームシーンにいるよー
 }
 

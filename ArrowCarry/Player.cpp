@@ -76,12 +76,15 @@ void Player::End()
 void Player::Update()
 { 
 	
+
+	
 	//if (m_isMapHit)
 	//{
 	//	ChangePosMapHit();
 	//	m_isMapHit = false;
 	//	m_isFalling = false;
 	//}
+	m_pos.y += 1;
 
 	//前のフレームの位置の保存
 	m_backPos = m_pos;
@@ -186,12 +189,9 @@ void Player::InitVelocity()
 	m_velocity = zero;
 }
 
-void Player::CheckPosMapHit(const Map& map)
+void Player::CheckPosMapHit(Map* map)
 {
-	// マップの当たり判定
-	Rect mapRect = map.GetRect();
-	Rect playerRect = GetRect();
-	
+	DrawString(0, 0, "Hit", GetColor(255, 255, 255));
 }
 
 void Player::Draw()
@@ -215,7 +215,25 @@ void Player::Draw()
 		useHandle, true, m_isDirLeft);
 
 	// あたりはんていの枠をつける
-	DrawBox(m_pos.x - kPlayerHitWidth * 0.4f, m_pos.y - kPlayerHitHeight * 0.5f,
-		m_pos.x + kPlayerHitWidth * 0.5f, m_pos.y + kPlayerHitHeight * 0.5f,
-		0x0000ff, false);
+	DrawBox(GetLeft(), GetTop(), GetRight(), GetBottom(), 0xff0000, false);
+		
+}
+float Player::GetLeft() const
+{
+	return (m_pos.x - kPlayerHitWidth * 0.4f);
+}
+
+float Player::GetTop() const
+{
+	return (m_pos.y - kPlayerHitHeight * 0.5f);
+}
+
+float Player::GetRight() const
+{
+	return (m_pos.x + kPlayerHitWidth * 0.5f);
+}
+
+float Player::GetBottom() const
+{
+	return (m_pos.y + kPlayerHitHeight * 0.5f);
 }

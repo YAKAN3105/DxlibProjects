@@ -3,10 +3,11 @@
 #include "DxLib.h"
 #include "Rect.h"
 
+class Player;
 class Map
 {
 public:
-	Map();
+	Map(Player* pPlayer);
 	virtual ~Map();
 
 	void Init();
@@ -21,7 +22,13 @@ private:
 	int _backgroundHandle;
 	int _goalHandle;
 
+	bool m_isGroundHit;
+	bool m_isBlockHit;
+	bool m_isGoalHit;
+	bool m_isWallHit;
 	Rect m_rect;
+
+	Player* m_player;
 };
 
 
