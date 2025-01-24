@@ -48,6 +48,7 @@ void Map::Update()
 			{
 				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
 				{
+
 					m_isGroundHit = true;
 				}
 			}

@@ -71,5 +71,7 @@ private:
 
 	Rect m_playerRect;
 
+	Map* m_map;
+
 };
 

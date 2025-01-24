@@ -191,6 +191,7 @@ void Player::InitVelocity()
 
 void Player::CheckPosMapHit(Map* map)
 {
+	
 	DrawString(0, 0, "Hit", GetColor(255, 255, 255));
 }
 
