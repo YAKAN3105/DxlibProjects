@@ -35,6 +35,8 @@ public:
 	void InitVelocity(); 
 	void CheckPosMapHit(Map* map);
 
+	
+
 
 
 private:
@@ -61,7 +63,7 @@ private:
 
 	// playerが左を向いているかどうか
 	// true:左向き　false:右向き
-	bool m_isDirLeft;	// 変数
+	bool m_isDirLeft;
  
 	// グラフィックハンドル
 	int m_handleIdle;
@@ -71,7 +73,6 @@ private:
 
 	Rect m_playerRect;
 
-	Map* m_map;
 
 };
 

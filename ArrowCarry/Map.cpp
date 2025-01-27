@@ -1,6 +1,8 @@
 #include "Map.h"
+#include "DxLib.h"
 #include <cassert>
 #include"Player.h"
+
 
 Map::Map(Player* pPlayer)
 {
@@ -48,7 +50,7 @@ void Map::Update()
 			{
 				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
 				{
-
+					m_player->CheckPosMapHit(this);
 					m_isGroundHit = true;
 				}
 			}
@@ -97,7 +99,11 @@ void Map::Draw()
 			/*‰æ‘œ‚Ì•`‰æ*/
 			assert(tempHandle != -1);
 			DrawGraph(y * 32, x * 32, tempHandle, true);
+#if _DEBUG
 			DrawFormatString(y * 32, x * 32, 0xffffff, "%d", Mapdata::mapData1[x][y]);
+#endif // _DEBUG
+
+			
 		}
 	}
 }

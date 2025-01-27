@@ -26,7 +26,7 @@ Arrow::Arrow() :
 	m_handleUpArrow(-1),
 	m_pos(300.0f,720.0f-32.0f)
 {
-
+	m_pPlayer = new Player();
 }
 
 Arrow::~Arrow()
@@ -49,6 +49,7 @@ void Arrow::Update()
 {
 	//pos.x = Game::kScreenWidth;
 	//pos.y = Game::kScreenHeight;
+	m_pPlayer->IsHitArrow();
 }
 
 void Arrow::Draw()

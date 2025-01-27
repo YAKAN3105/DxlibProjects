@@ -4,7 +4,7 @@
 #include "Rect.h"
 
 class Player;
-class Map
+class Map 
 {
 public:
 	Map(Player* pPlayer);

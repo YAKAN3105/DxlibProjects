@@ -40,10 +40,9 @@ void SceneGame::Update()
 	m_pArrow->Update();
 	_map->Update();
 	m_button->Update();
+	m_pPlayer->CheckPosMapHit(_map);
 
 
-
-	//m_pMap->CheckHit();
 	//int i = 0;
 
 	//m_pArrow->OnPlayerHit();
@@ -64,6 +63,7 @@ void SceneGame::Draw()
 	m_pArrow->Draw();
 	m_pPlayer->Draw();
 	m_button->Draw();
+	
 	DrawFormatString(0, 0, 0xffffff, "SceneGame");// いまゲームシーンにいるよー
 }
 

@@ -97,7 +97,7 @@ void Player::Update()
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
 		m_isRun = true;
-		m_pos.x += m_speed;
+		m_pos.x = m_speed++;
 	}
 	else if (CheckHitKey(KEY_INPUT_0))
 	{
@@ -175,7 +175,6 @@ void Player::AnimationUpdate()
 void Player::IsHitArrow()
 {
 	m_isJumpNow = true;
-
 }
 
 void Player::OnArrow(Vec2 vec)
@@ -191,8 +190,9 @@ void Player::InitVelocity()
 
 void Player::CheckPosMapHit(Map* map)
 {
-	
-	DrawString(0, 0, "Hit", GetColor(255, 255, 255));
+	// ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ğæ“¾
+//	m_pos.y = map->GetRect().GetTop() - kPlayerHitHeight * 0.5f;
+	DrawString(0, 100, "Hit", GetColor(255, 255, 255));
 }
 
 void Player::Draw()
@@ -210,10 +210,25 @@ void Player::Draw()
 		useHandle = m_handleRun;
 	}
 
-	// •`‰æ‚Æ“–‚½‚è”»’è‚ğ‚Â‚¯‚é
-	DrawRectGraph(static_cast<int>(m_pos.x - kGraphWidth *0.4f), static_cast<int>(m_pos.y - kGraphHeight * 0.5f),
-		animNo * kGraphWidth, 0, kGraphWidth, kGraphHeight,
-		useHandle, true, m_isDirLeft);
+	
+	//DrawCircle(100, 100, 12, 0xff0000, true);
+#if _DEBUG
+
+	DrawFormatString(0, 15, GetColor(255, 255, 255), "%f,%f", m_pos.x, m_pos.y);
+
+#endif // DEBUG
+	
+	// •`‰æ
+	// ‰æ‘œ‚Ì•‚Æ‚‚³‚Ì”¼•ª‚ğˆø‚­‚±‚Æ‚Å‰æ‘œ‚Ì’†S‚ğŠî€‚É•`‰æ‚Å‚«‚é
+	int drawPosX = static_cast<int>(m_pos.x - kGraphWidth * 0.5f);
+	// ‰æ‘œ‚Ì‚‚³‚Ì”¼•ª‚ğˆø‚­‚±‚Æ‚Å‰æ‘œ‚Ì‰º’ê‚ğŠî€‚É•`‰æ‚Å‚«‚é
+	int drawPosY = static_cast<int>(m_pos.y - kGraphHeight);
+	//•`‰æ‚·‚é‰æ‘œ‚ÌXÀ•W
+	int animPosX = animNo * kGraphWidth;
+	//•`‰æ‚·‚é‰æ‘œ‚ÌYÀ•W(‰æ‘œ©‘Ì‚ğ‡‚í‚¹‚Ä‚ ‚é‚Ì‚Åí‚É0)
+	int animPosY = 0;
+	//DrawRectGraph(drawPosX, drawPosY,animPosX, animPosY, kGraphWidth, kGraphHeight,useHandle, true, m_isDirLeft);
+	DrawRectGraph(drawPosX, drawPosY, animPosX, animPosY, kGraphWidth, kGraphHeight, useHandle, true, m_isDirLeft);
 
 	// ‚ ‚½‚è‚Í‚ñ‚Ä‚¢‚Ì˜g‚ğ‚Â‚¯‚é
 	DrawBox(GetLeft(), GetTop(), GetRight(), GetBottom(), 0xff0000, false);
