@@ -1,30 +1,33 @@
 #include "DxLib.h"
 #include "game.h"
 #include "TitleScene.h"
+#include "GameScene.h"
+
+
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
-	// 変数の作成
-	TitleScene titleScene;
-	titleScene.Init();
-	
+{	
 	// 一部のDxLib関数はDxLib_Init()の前に呼ぶ必要がある
 	// フルスクリーンではなく、ウィンドウモードで開く
 	ChangeWindowMode(Game::kDefaultWindowMode);
 	// 画面のサイズを変更する
 	SetGraphMode(Game::kScreenWidth, Game::kScreenHeight, Game::kColorBitNum);
-
+	// ＤＸライブラリ初期化処理
 	SetWindowText("ArrowShooting");
-	
-
-	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
+	if (DxLib_Init() == -1)		
 	{
 		return -1;			// エラーが起きたら直ちに終了
 	}
-
 	// 描画先を裏画面にする
 	SetDrawScreen(DX_SCREEN_BACK);
+
+	// 変数の作成
+	TitleScene titleScene;
+	titleScene.Init();
+	GameScene gameScene;
+	gameScene.Init();
+	int nextScene = 0;
 
 
 	// ゲームループ
@@ -38,8 +41,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 		// ここにゲームの処理を書く
-		titleScene.Update();
-		titleScene.Draw();
+		if (nextScene == 0)
+		{
+			nextScene = titleScene.Update();
+			titleScene.Draw();
+		}
+		else if(nextScene == 1)
+		{
+			nextScene == gameScene.Update();
+			gameScene.Draw();
+		}
 
 		// 画面の切り替わりを待つ必要がある
 		ScreenFlip();
