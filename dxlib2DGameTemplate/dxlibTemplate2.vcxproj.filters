@@ -22,9 +22,6 @@
     <Filter Include="GameCommon">
       <UniqueIdentifier>{3fa92fe6-9e9b-4a6b-8c59-7c263f2f9c25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PlatformGame">
-      <UniqueIdentifier>{323c7984-d22b-4e70-b2be-d83bac56e214}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="SimpleBullet.cpp">
       <Filter>GameCommon</Filter>
-    </ClCompile>
-    <ClCompile Include="PlatformScene.cpp">
-      <Filter>PlatformGame</Filter>
     </ClCompile>
     <ClCompile Include="ShootingEnemy.cpp">
       <Filter>ShootingGame</Filter>
@@ -117,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="SimpleBullet.h">
       <Filter>GameCommon</Filter>
-    </ClInclude>
-    <ClInclude Include="PlatformScene.h">
-      <Filter>PlatformGame</Filter>
     </ClInclude>
     <ClInclude Include="ShootingEnemy.h">
       <Filter>ShootingGame</Filter>

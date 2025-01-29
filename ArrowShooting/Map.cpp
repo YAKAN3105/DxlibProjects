@@ -1,12 +1,10 @@
 #include "Map.h"
 #include "DxLib.h"
 #include <cassert>
-#include"Player.h"
 
 
-Map::Map(Player* pPlayer)
+Map::Map()
 {
-	m_player = pPlayer;
 }
 
 Map::~Map()
@@ -20,67 +18,6 @@ void Map::Init()
 	_wallHandle = LoadGraph("wall.jpg");
 	_backgroundHandle = LoadGraph("background.jpg");
 	_goalHandle = LoadGraph("Goal.jpg");
-}
-
-void Map::Update()
-{
-	m_isGroundHit = false;
-	m_isBlockHit = false;
-	m_isGoalHit = false;
-	m_isWallHit = false;
-
-	for (int y = 0; y < Mapdata::kChipIndexY; y++)//s
-	{
-		for (int x = 0; x < Mapdata::kChipIndexX; x++)//—ñ
-		{
-			int chipNo = Mapdata::mapData1[y][x];
-
-			//int chipLeft = x * 32;
-			int chipLeft = m_rect.GetLeft();
-			//int chipTop = y * 32;
-			int chipTop = m_rect.GetTop();
-			//int chipRight = chipLeft + 32;
-			int chipRight = m_rect.GetRight();
-			//int chipBottom = chipTop + 32;
-			int chipBottom = m_rect.GetBottom();
-			// â‘Î“–‚½‚ç‚È‚¢ê‡@true‚É‚È‚é(ˆê‚Â‚Å‚àtrue‚È‚ç“–‚Á‚Ä‚¢‚È‚¢)
-			bool isPlayerLeft =(m_player->GetRight() < chipLeft);
-			bool isPlayerTop = (m_player->GetBottom() < chipTop);
-			bool isPlayerRight = (chipRight < m_player->GetLeft());
-			bool isPlayerBottom =  (chipBottom < m_player->GetTop());
-
-			//’n–Ê‚É“–‚½‚Á‚½Žž‚Ìˆ—
-			if (chipNo == 1)
-			{
-				if (!isPlayerLeft && !isPlayerTop && !isPlayerRight && !isPlayerBottom)
-				{
-					m_player->CheckPosMapHit(this);
-					m_isGroundHit = true;
-				}
-			}
-			if (chipNo == 2)
-			{
-				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
-				{
-					m_isBlockHit = true;
-				}
-			}
-			if (chipNo == 7)
-			{
-				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
-				{
-					m_isGoalHit = true;
-				}
-			}
-			if (chipNo == 67)
-			{
-				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
-				{
-					m_isWallHit = true;
-				}
-			}
-		}
-	}
 }
 
 void Map::Draw()

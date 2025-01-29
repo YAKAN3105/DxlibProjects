@@ -3,7 +3,7 @@
 namespace
 {
 	//矢印の移動量
-	constexpr float _kMoveArrow = 40.0f;
+	constexpr float _kMoveArrow = 80.0f;
 	//矢印の表示切替時間
 	constexpr int _kArrowShowTime = 60;
 	//矢印の非表示切替時間
@@ -34,8 +34,6 @@ void TitleScene::Init()
 	_arrow = std::make_unique<SimpleText>();
 	//シューティングゲーム
 	_shootingGameText = std::make_unique<SimpleText>();
-	//プラットフォームゲーム
-	_platformGameText = std::make_unique<SimpleText>();
 	//ゲーム終了
 	_endGameText = std::make_unique<SimpleText>();
 
@@ -44,9 +42,7 @@ void TitleScene::Init()
 	_arrow->Init("->");
 	_arrow->SetColor(Color::RedColor);
 	//シューティングゲーム
-	_shootingGameText->Init("ShootingGame");
-	//プラットフォームゲーム
-	_platformGameText->Init("PlatformGame");
+	_shootingGameText->Init("Start");
 	//ゲーム終了
 	_endGameText->Init("EndGame");
 
@@ -55,8 +51,6 @@ void TitleScene::Init()
 	_arrow->Transform.Position = _kArrowFirstPos;
 	//シューティングゲーム
 	_shootingGameText->Transform.Position = _kFirstTextPos;
-	//プラットフォームゲーム
-	_platformGameText->Transform.Position = _kSecondTextPos;
 	//ゲーム終了
 	_endGameText->Transform.Position = _kThirdTextPos;
 }
@@ -87,8 +81,6 @@ void TitleScene::Draw()
 	_arrow->Draw();
 	//シューティングゲーム
 	_shootingGameText->Draw();
-	//プラットフォームゲーム
-	_platformGameText->Draw();
 	//ゲーム終了
 	_endGameText->Draw();
 }
@@ -153,10 +145,6 @@ void TitleScene::StateUpdate()
 	if (_arrow->Transform.Position.Y == _shootingGameText->Transform.Position.Y)
 	{
 		_setScene = GameSetting::SceneState::ShootingGame;
-	}
-	else if (_arrow->Transform.Position.Y == _platformGameText->Transform.Position.Y)
-	{
-		_setScene = GameSetting::SceneState::PlatformGame;
 	}
 	else if (_arrow->Transform.Position.Y == _endGameText->Transform.Position.Y)
 	{

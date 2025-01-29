@@ -7,11 +7,10 @@ class Player;
 class Map 
 {
 public:
-	Map(Player* pPlayer);
+	Map();
 	virtual ~Map();
 
 	void Init();
-	void Update();
 	void Draw();
 
 	Rect GetRect() const { return m_rect; }

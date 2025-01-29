@@ -1,19 +1,21 @@
 #include "DxLib.h"
 #include "game.h"
-#include "SceneTitle.h"
-#include "SceneGame.h"
-#include "SceneResult.h"
+#include "TitleScene.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+	// 変数の作成
+	TitleScene titleScene;
+	titleScene.Init();
+	
 	// 一部のDxLib関数はDxLib_Init()の前に呼ぶ必要がある
 	// フルスクリーンではなく、ウィンドウモードで開く
 	ChangeWindowMode(Game::kDefaultWindowMode);
 	// 画面のサイズを変更する
 	SetGraphMode(Game::kScreenWidth, Game::kScreenHeight, Game::kColorBitNum);
 
-	SetWindowText("あいうえお");
+	SetWindowText("ArrowShooting");
 	
 
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
@@ -24,19 +26,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// 描画先を裏画面にする
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	// *でポインタを指定する
-	SceneBase* scene;
-
-	scene = new SceneTitle; // 最初に住んでいるところ
-
-	scene->Init();
-	
-
-	
-
-	//scene = new SceneGame;
-
-	//scene = new SceneResult;
 
 	// ゲームループ
 	while (ProcessMessage() == 0) // Windowsが行う処理を待つ
@@ -49,23 +38,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 		// ここにゲームの処理を書く
-		
-		
-		scene->Update(); // 引っ越し先を決める
-		
-		scene->Draw();
-		
-
-		if (scene != scene->m_next)
-		{
-			SceneBase* next = scene->m_next; // 引っ越し先の住所の確定
-
-			delete scene; // 元住んでいた住所を(delete)壊す
-			scene = nullptr; // 何も住む場所がない状態
-
-			scene = next; // 次のシーンに引っ越しする
-		}
-
+		titleScene.Update();
+		titleScene.Draw();
 
 		// 画面の切り替わりを待つ必要がある
 		ScreenFlip();

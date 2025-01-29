@@ -7,7 +7,6 @@
 #include "GameSetting.h"
 #include "TitleScene.h"
 #include "ShootingScene.h"
-#include "PlatformScene.h"
 #include "ClearScene.h"
 #include "OverScene.h"
 
@@ -60,11 +59,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 			else if (nextScene == static_cast<int>(GameSetting::SceneState::ShootingGame))
 			{
 				scene = std::make_unique<ShootingScene>();//シューティングゲームシーン
-				scene->Init();//初期化
-			}
-			else if (nextScene == static_cast<int>(GameSetting::SceneState::PlatformGame))
-			{
-				scene = std::make_unique<PlatformScene>();//プラットフォームゲームシーン
 				scene->Init();//初期化
 			}
 			else if (nextScene == static_cast<int>(GameSetting::SceneState::ClearGame))

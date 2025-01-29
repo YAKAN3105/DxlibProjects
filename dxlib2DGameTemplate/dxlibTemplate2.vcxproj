@@ -148,7 +148,6 @@
     <ClCompile Include="OverScene.cpp" />
     <ClCompile Include="ShootingEnemy.cpp" />
     <ClCompile Include="ShootingPlayer.cpp" />
-    <ClCompile Include="PlatformScene.cpp" />
     <ClCompile Include="ShootingScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="SimpleBullet.cpp" />
@@ -175,7 +174,6 @@
     <ClInclude Include="OverScene.h" />
     <ClInclude Include="ShootingEnemy.h" />
     <ClInclude Include="ShootingPlayer.h" />
-    <ClInclude Include="PlatformScene.h" />
     <ClInclude Include="ShootingScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="SimpleBullet.h" />
