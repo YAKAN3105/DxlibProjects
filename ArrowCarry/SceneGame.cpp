@@ -18,7 +18,7 @@ SceneGame::SceneGame()
 {
 	m_pPlayer= new Player();
 	m_pArrow = new Arrow();
-	_map = new Map(m_pPlayer);
+	m_map = new Map(m_pPlayer);
 	m_button = new button();
 }
 
@@ -30,7 +30,7 @@ void SceneGame::Init()
 {
 	m_pPlayer->Init();
 	m_pArrow->Init();
-	_map->Init();
+	m_map->Init();
 	m_button->Init();
 }
 
@@ -38,9 +38,9 @@ void SceneGame::Update()
 {
 	m_pPlayer->Update();
 	m_pArrow->Update();
-	_map->Update();
+	m_map->Update();
 	m_button->Update();
-	m_pPlayer->CheckPosMapHit(_map);
+	m_pPlayer->CheckPosMapHit(m_map);
 
 
 	//int i = 0;
@@ -59,7 +59,7 @@ void SceneGame::Draw()
 {
 	// ‰æ–Ê‘S‘Ì‚ðŽ‡‚Å“h‚è‚Â‚Ô‚·
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(206, 128, 255), true);
-	_map->Draw();
+	m_map->Draw();
 	m_pArrow->Draw();
 	m_pPlayer->Draw();
 	m_button->Draw();

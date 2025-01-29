@@ -36,6 +36,6 @@ private:
 	// ‰Šú‰»
 	Player* m_pPlayer;
 	Arrow* m_pArrow;
-	Map* _map;
+	Map* m_map;
 	button* m_button;
 };

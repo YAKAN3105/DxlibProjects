@@ -64,6 +64,9 @@ void Player::Init()
 	m_pos.y = kPlayerPosY;
 	m_velocity.x = 0;
 	m_velocity.y = 0;
+
+	//当たり判定の初期化
+	m_playerRect.Init(kPlayerPosX, kPlayerPosY, kPlayerHitWidth, kPlayerHitHeight);
 }
 
 void Player::End()
@@ -75,15 +78,13 @@ void Player::End()
 
 void Player::Update()
 { 
-	
-
-	
 	//if (m_isMapHit)
 	//{
 	//	ChangePosMapHit();
 	//	m_isMapHit = false;
 	//	m_isFalling = false;
 	//}
+
 	m_pos.y += 1;
 
 	//前のフレームの位置の保存
@@ -92,17 +93,36 @@ void Player::Update()
 	//位置の更新
 	m_pos = m_pos + m_velocity;
 
+	//当たり判定の更新
+	m_playerRect.UpdateCenter(m_pos);
+
 	//キー入力の確認
 	// スペースキーを押したらキャラクターが走るようにする
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
 		m_isRun = true;
-		m_pos.x = m_speed++;
+		//m_pos.x = m_speed++;
 	}
 	else if (CheckHitKey(KEY_INPUT_0))
 	{
 		m_isRun = false;
 		m_pos.x = m_playerNowPos;//初期位置に戻る
+	}
+
+	//Run状態なら全身
+	if (m_isRun)
+	{
+		m_velocity.x = m_speed;
+	}
+	else
+	{
+		m_velocity.x = 0;
+	}
+
+	//床にいるかどうか
+	if (!m_isFalling)
+	{
+		m_velocity.y = 0;
 	}
 
 
@@ -190,8 +210,15 @@ void Player::InitVelocity()
 
 void Player::CheckPosMapHit(Map* map)
 {
-	// プレイヤーの位置を取得
-//	m_pos.y = map->GetRect().GetTop() - kPlayerHitHeight * 0.5f;
+	
+	if (GetBottom()>map->GetRect().GetTop())
+	{
+		m_isFalling = false;
+		m_isJumpNow = false;
+	}
+		
+	
+
 	DrawString(0, 100, "Hit", GetColor(255, 255, 255));
 }
 

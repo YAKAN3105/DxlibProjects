@@ -35,10 +35,14 @@ void Map::Update()
 		{
 			int chipNo = Mapdata::mapData1[y][x];
 
-			int chipLeft = x * 32;
-			int chipTop = y * 32;
-			int chipRight = chipLeft + 32;
-			int chipBottom = chipTop + 32;
+			//int chipLeft = x * 32;
+			int chipLeft = m_rect.GetLeft();
+			//int chipTop = y * 32;
+			int chipTop = m_rect.GetTop();
+			//int chipRight = chipLeft + 32;
+			int chipRight = m_rect.GetRight();
+			//int chipBottom = chipTop + 32;
+			int chipBottom = m_rect.GetBottom();
 			// â‘Î“–‚½‚ç‚È‚¢ê‡@true‚É‚È‚é(ˆê‚Â‚Å‚àtrue‚È‚ç“–‚Á‚Ä‚¢‚È‚¢)
 			bool isPlayerLeft =(m_player->GetRight() < chipLeft);
 			bool isPlayerTop = (m_player->GetBottom() < chipTop);
@@ -48,7 +52,7 @@ void Map::Update()
 			//’n–Ê‚É“–‚½‚Á‚½Žž‚Ìˆ—
 			if (chipNo == 1)
 			{
-				if (!(isPlayerLeft || isPlayerTop || isPlayerRight || isPlayerBottom))
+				if (!isPlayerLeft && !isPlayerTop && !isPlayerRight && !isPlayerBottom)
 				{
 					m_player->CheckPosMapHit(this);
 					m_isGroundHit = true;
