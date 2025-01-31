@@ -9,6 +9,10 @@ public:
 	void End();
 	void Update();
 	void Draw();
+	void Move();
 
+private:
+	bool m_isTrigger;
+	Vec2 m_pos;
 };
 

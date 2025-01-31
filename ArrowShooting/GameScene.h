@@ -1,6 +1,7 @@
 #pragma once
 #include"Map.h"
 #include"Player.h"
+#include"Enemy.h"
 class GameScene
 {
 public:
@@ -12,5 +13,6 @@ public:
 private:
 	Map m_map;
 	Player m_player;
+	Enemy m_enemy;
 };
 
