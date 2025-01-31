@@ -27,13 +27,14 @@ void Player::Init()
 	m_handle = m_idleHandle;
 	i = 0;
 	maxAnimNum = 10;
-	m_pos = Vec2(500, 500);//初期位置
+	m_pos = Vec2(500, 500);//初期位置    
 }
 
 void Player::Update()
 {
 	AnimRoop();
 	Move();
+	Jump();
 	Gravity();
 }
 
@@ -66,21 +67,17 @@ void Player::AnimRoop()
 
 void Player::Move()
 {
-	if (CheckHitKey(KEY_INPUT_UP))
-	{
-		m_isJump = TRUE;
-		m_pos.y -= 10;
-		m_handle = m_jumpHandle;
-		maxAnimNum = 0;
-	}
-	else if (CheckHitKey(KEY_INPUT_RIGHT) && m_pos.x < 1280 -80)
+	// パッドの入力状態を取得
+	int padState = GetJoypadInputState(DX_INPUT_PAD1);
+
+	if (padState == PAD_INPUT_RIGHT && m_pos.x < 1280 -80)
 	{
 		m_isDirLeft = FALSE;
 		m_pos.x += 4;
 		m_handle = m_runHandle;
 		maxAnimNum=7;
 	}
-	else if (CheckHitKey(KEY_INPUT_LEFT) && m_pos.x > 20)
+	else if (padState ==  PAD_INPUT_LEFT&& m_pos.x > 20)
 	{
 		m_isDirLeft = TRUE;
 		m_pos.x -= 4;
@@ -98,5 +95,23 @@ void Player::Gravity()
 	if (m_pos.y < 720 -58)
 	{
 		m_pos.y += 4;
+	}
+}
+
+void Player::Jump()
+{
+	// パッドの入力状態を取得
+	int padState = GetJoypadInputState(DX_INPUT_PAD1);
+	// 現在地面にいるか
+	bool isGround = (m_pos.y >= 660);
+	// Aボタンが押されているか
+	bool pushA = (padState == PAD_INPUT_A);
+
+	if (pushA && isGround)
+	{
+		m_isJump = TRUE;
+		m_pos.y -= 80;
+		m_handle = m_jumpHandle;
+		maxAnimNum = 0;
 	}
 }

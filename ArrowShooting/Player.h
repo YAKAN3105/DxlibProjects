@@ -11,6 +11,7 @@ public:
 	void AnimRoop();
 	void Move();
 	void Gravity();
+	void Jump();
 private:
 	int m_handle;
 	int	m_animHandle;
