@@ -20,6 +20,7 @@ public:
 private:
 	int m_handle;
 	bool m_isTrigger;
+	int m_AccelerationCount;
 	Vec2 m_pos;
 };
 

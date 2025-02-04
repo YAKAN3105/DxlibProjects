@@ -147,7 +147,7 @@ void Player::Gravity()
 {
 	if (m_pos.y < 720 -58)
 	{
-		m_pos.y += 4;
+		m_pos.y += 2;
 	}
 }
 

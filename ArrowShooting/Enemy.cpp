@@ -7,12 +7,16 @@ namespace
 	int kGraphHeight = 128;
 	int kHitBoxW = 70;
 	int kHitBoxH = 50;
+
+	// enemyÇÃèâä˙ë¨ìx
+	int speed = 5;
 }
 
 
 Enemy::Enemy() :
 	m_isTrigger(false),
-	m_handle(0)
+	m_handle(0),
+	m_AccelerationCount(0)
 {
 	m_handle = 0;
 }
@@ -34,6 +38,19 @@ void Enemy::End()
 
 void Enemy::Update()
 {
+	++m_AccelerationCount;
+	if (m_AccelerationCount % 300 == 0)
+	{
+		speed = 10;
+	}
+	if(m_AccelerationCount % 600 == 0)
+	{
+		speed = 20;
+	}
+	if (m_AccelerationCount % 900 == 0)
+	{
+		speed = 30;
+	}
 	Move();
 }
 
@@ -48,21 +65,21 @@ void Enemy::Draw()
 
 void Enemy::Move()
 {
-	if (m_pos.x == 50 )
+	if (m_pos.x <= 50 )
 	{
 		m_isTrigger = false;
 	}
-	else if (m_pos.x == 1230)
+	else if (m_pos.x >= 1230)
 	{
 		m_isTrigger = true;
 	}
 	if (m_isTrigger)
 	{
-		m_pos.x -= 5;
+		m_pos.x -= speed;
 	}
 	else
 	{
-		m_pos.x += 5;
+		m_pos.x += speed;
 	}
 }
 
