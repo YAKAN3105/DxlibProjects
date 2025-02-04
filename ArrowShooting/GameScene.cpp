@@ -1,4 +1,4 @@
-#include "GameScene.h"
+0#include "GameScene.h"
 #include "DxLib.h"
 #include"Map.h"
 #include"game.h"
