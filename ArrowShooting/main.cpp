@@ -2,6 +2,7 @@
 #include "game.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "ResultScene.h"
 
 
 
@@ -27,7 +28,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	titleScene.Init();
 	GameScene gameScene;
 	gameScene.Init();
+	ResultScene resultScene;
+	resultScene.Init();
 	int nextScene = 0;
+
+	Score* score = new Score;
 
 
 	// ゲームループ
@@ -48,8 +53,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		else if(nextScene == 1)
 		{
-			nextScene == gameScene.Update();
+			nextScene = gameScene.Update();
 			gameScene.Draw();
+		}
+		else if (nextScene == 2)
+		{
+			nextScene = resultScene.Update();
+			resultScene.Draw(*score);
 		}
 
 		// 画面の切り替わりを待つ必要がある

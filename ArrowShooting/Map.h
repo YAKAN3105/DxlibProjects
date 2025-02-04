@@ -11,6 +11,7 @@ public:
 	virtual ~Map();
 
 	void Init();
+	void Update();
 	void Draw();
 
 	Rect GetRect() const { return m_rect; }
@@ -20,6 +21,8 @@ private:
 	int _wallHandle;
 	int _backgroundHandle;
 	int _goalHandle;
+	
+	
 
 	bool m_isGroundHit;
 	bool m_isBlockHit;

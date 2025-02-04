@@ -18,6 +18,7 @@ void Map::Init()
 	_wallHandle = LoadGraph("wall.jpg");
 	_backgroundHandle = LoadGraph("background.jpg");
 	_goalHandle = LoadGraph("Goal.jpg");
+	
 }
 
 void Map::Draw()
@@ -40,6 +41,8 @@ void Map::Draw()
 			/*‰æ‘œ‚Ì•`‰æ*/
 			assert(tempHandle != -1);
 			DrawGraph(y * 32, x * 32, tempHandle, true);
+			
+			
 #if _DEBUG
 			DrawFormatString(y * 32, x * 32, 0xffffff, "%d", Mapdata::mapData1[x][y]);
 #endif // _DEBUG

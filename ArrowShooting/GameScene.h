@@ -2,6 +2,7 @@
 #include"Map.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"Score.h"
 class GameScene
 {
 public:
@@ -10,9 +11,11 @@ public:
 	void Init();
 	int Update();
 	void Draw();
+	bool IsColision();
 private:
 	Map m_map;
 	Player m_player;
 	Enemy m_enemy;
+	Score m_score;
 };
 

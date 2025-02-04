@@ -1,0 +1,17 @@
+#pragma once
+class Score
+{
+public:
+	Score();
+	~Score();
+	void Init();
+	void Update();
+	void Draw();
+	int GetScore()const { return m_score; }
+private:
+	int m_score;
+	int m_scoreFrameCount;// スコアの上昇
+	int m_fontHandle;
+	int m_numFrameCount;// 秒数ごとにボーナススコアが上がる
+};
+
