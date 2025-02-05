@@ -1,4 +1,6 @@
 #pragma once
+#include "GlovalScore.h"
+
 class Score
 {
 public:
@@ -7,7 +9,7 @@ public:
 	void Init();
 	void Update();
 	void Draw();
-	int GetScore()const { return m_score; }
+	int GetScore() { return glovalScore; }
 private:
 	int m_score;
 	int m_scoreFrameCount;// ÉXÉRÉAÇÃè„è∏

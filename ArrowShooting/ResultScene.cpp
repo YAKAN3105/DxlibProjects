@@ -34,5 +34,5 @@ void ResultScene::Draw(Score& score)
 {
 	DrawGraph(0, 0, m_handle,FALSE);
 
-	DrawFormatStringToHandle(30, 30, 0xcd5937, m_fontHandle, "SCORE:%d", score.GetScore());
+	DrawFormatStringToHandle(30, 30, 0xcd5937, m_fontHandle, "SCORE:%d", glovalScore);
 }

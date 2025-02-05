@@ -1,6 +1,6 @@
 #pragma once
 #include "Score.h"
-class Score;
+
 class ResultScene
 {
 public:
@@ -12,5 +12,4 @@ public:
 private:
 	int m_handle;
 	int m_fontHandle;
-
 };
