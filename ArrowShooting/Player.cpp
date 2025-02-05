@@ -127,7 +127,7 @@ void Player::Move()
 		m_handle = m_runHandle;
 		maxAnimNum=7;
 	}
-	else if (padState ==  PAD_INPUT_LEFT&& m_pos.x > 20)
+	if (padState ==  PAD_INPUT_LEFT&& m_pos.x > 20)
 	{
 		m_isDirLeft = TRUE;
 		m_pos.x -= m_speed;
