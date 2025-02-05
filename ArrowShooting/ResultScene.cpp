@@ -22,7 +22,7 @@ int ResultScene::Update()
 	// パッドの入力状態を取得
 	int padState = GetJoypadInputState(DX_INPUT_PAD1);
 	// タイトルに戻る
-	if (padState == PAD_INPUT_A)
+	if (padState == PAD_INPUT_B)
 	{
 		// シーン遷移
 		return 0;

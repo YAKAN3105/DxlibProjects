@@ -45,11 +45,27 @@ void Enemy::Update()
 	}
 	if(m_AccelerationCount % 600 == 0)
 	{
-		speed = 20;
+		speed = 15;
 	}
 	if (m_AccelerationCount % 900 == 0)
 	{
+		speed = 20;
+	}
+	if (m_AccelerationCount % 1200 == 0)
+	{
+		speed = 25;
+	}
+	if (m_AccelerationCount % 1500 == 0)
+	{
 		speed = 30;
+	}
+	if (m_AccelerationCount % 1800 == 0)
+	{
+		speed = 35;
+	}
+	if (m_AccelerationCount % 2100 == 0)
+	{
+		speed = 40;
 	}
 	Move();
 }
