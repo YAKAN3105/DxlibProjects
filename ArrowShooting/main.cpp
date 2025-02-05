@@ -32,7 +32,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	resultScene.Init();
 	int nextScene = 0;
 
-	Score* score = new Score;
+	//Score* score = new Score;
 
 
 	// ゲームループ
@@ -46,20 +46,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 		// ここにゲームの処理を書く
+		
 		if (nextScene == 0)
 		{
 			nextScene = titleScene.Update();
 			titleScene.Draw();
 		}
-		else if(nextScene == 1)
+		if(nextScene == 1)
 		{
 			nextScene = gameScene.Update();
 			gameScene.Draw();
 		}
-		else if (nextScene == 2)
+		if (nextScene == 2)
 		{
 			nextScene = resultScene.Update();
-			resultScene.Draw(*score);
+			resultScene.Draw();
 		}
 
 		// 画面の切り替わりを待つ必要がある

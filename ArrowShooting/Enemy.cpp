@@ -9,14 +9,15 @@ namespace
 	int kHitBoxH = 50;
 
 	// enemy‚Ì‰Šú‘¬“x
-	int speed = 5;
+	int kSpeed = 5;
 }
 
 
 Enemy::Enemy() :
 	m_isTrigger(false),
 	m_handle(0),
-	m_AccelerationCount(0)
+	m_AccelerationCount(0),
+	m_speed (kSpeed)
 {
 	m_handle = 0;
 }
@@ -27,8 +28,7 @@ Enemy::~Enemy()
 
 void Enemy::Init()
 {
-	// enemy‚Ì‰ŠúˆÊ’u
-	m_pos = Vec2(1000, 670);
+	EnemySetUp();
 	m_handle = LoadGraph("data/Arrow/Right.png");
 }
 
@@ -41,31 +41,31 @@ void Enemy::Update()
 	++m_AccelerationCount;
 	if (m_AccelerationCount % 300 == 0)
 	{
-		speed = 10;
+		m_speed = 10;
 	}
 	if(m_AccelerationCount % 600 == 0)
 	{
-		speed = 15;
+		m_speed = 15;
 	}
 	if (m_AccelerationCount % 900 == 0)
 	{
-		speed = 20;
+		m_speed = 20;
 	}
 	if (m_AccelerationCount % 1200 == 0)
 	{
-		speed = 25;
+		m_speed = 25;
 	}
 	if (m_AccelerationCount % 1500 == 0)
 	{
-		speed = 30;
+		m_speed = 30;
 	}
 	if (m_AccelerationCount % 1800 == 0)
 	{
-		speed = 35;
+		m_speed = 35;
 	}
 	if (m_AccelerationCount % 2100 == 0)
 	{
-		speed = 40;
+		m_speed = 40;
 	}
 	Move();
 }
@@ -91,12 +91,21 @@ void Enemy::Move()
 	}
 	if (m_isTrigger)
 	{
-		m_pos.x -= speed;
+		m_pos.x -= m_speed;
 	}
 	else
 	{
-		m_pos.x += speed;
+		m_pos.x += m_speed;
 	}
+}
+
+void Enemy::EnemySetUp()
+{
+	// enemy‚Ì‰ŠúˆÊ’u
+	m_pos = Vec2(1000, 670);
+	m_isTrigger = false;
+	m_AccelerationCount = 0;
+	m_speed = kSpeed;
 }
 
 float Enemy::GetLeft()

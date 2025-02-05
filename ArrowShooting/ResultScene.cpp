@@ -25,12 +25,13 @@ int ResultScene::Update()
 	if (padState == PAD_INPUT_B)
 	{
 		// ƒV[ƒ“‘JˆÚ
+		glovalScore = 0;
 		return 0;
 	}
 	return 2;
 }
 
-void ResultScene::Draw(Score& score)
+void ResultScene::Draw()
 {
 	DrawGraph(0, 0, m_handle,FALSE);
 

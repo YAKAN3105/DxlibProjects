@@ -19,6 +19,7 @@ public:
 	void OnDamage();
 	void UpdateDead();
 	float GetPosY()const { return m_pos.y; }
+	void PlayerSetUp();
 private:
 	int m_handle;
 	int	m_animHandle;

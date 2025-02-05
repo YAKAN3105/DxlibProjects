@@ -40,10 +40,7 @@ void Player::Init()
 	m_idleHandle = LoadGraph("data/image1/Sprites/King/Idle.png");
 	m_runHandle = LoadGraph("data/image1/Sprites/King/Run.png");
 	m_jumpHandle = LoadGraph("data/image1/Sprites/King/Jump.png");
-	m_handle = m_idleHandle;
-	i = 0;
-	maxAnimNum = 10;
-	m_pos = Vec2(500, 500);//‰ŠúˆÊ’u    
+	PlayerSetUp();
 }
 
 void Player::Update()
@@ -215,4 +212,13 @@ void Player::UpdateDead()
 	}
 	m_pos.y += 4;
 
+}
+
+void Player::PlayerSetUp()
+{
+	m_handle = m_idleHandle;
+	i = 0;
+	maxAnimNum = 10;
+	m_pos = Vec2(500, 500);//‰ŠúˆÊ’u   
+	m_hp = kMaxHp;
 }

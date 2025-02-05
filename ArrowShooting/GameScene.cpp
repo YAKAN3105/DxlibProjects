@@ -24,6 +24,9 @@ int GameScene::Update()
 {
 	if (m_player.GetPosY()>Game::kScreenHeight)
 	{
+		m_enemy.EnemySetUp();
+		m_player.PlayerSetUp();
+		m_score.ScoreSetUp();
 		return 2;
 	}
 	m_score.Update();

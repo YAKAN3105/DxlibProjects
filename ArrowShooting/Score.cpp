@@ -17,7 +17,7 @@ Score::~Score()
 void Score::Init()
 {
 	m_fontHandle = CreateFontToHandle("Bernard MT Condensed", 40, 2, DX_FONTTYPE_ANTIALIASING_EDGE_16X16);
-	glovalScore = 0;
+	ScoreSetUp();
 }
 
 void Score::Update()
@@ -40,5 +40,11 @@ void Score::Update()
 void Score::Draw()
 {
 	DrawFormatStringToHandle(30, 30, 0xcd5937, m_fontHandle, "SCORE:%d", glovalScore);
+}
+
+void Score::ScoreSetUp()
+{
+	m_scoreFrameCount = 60;
+	m_numFrameCount = 0;
 }
 

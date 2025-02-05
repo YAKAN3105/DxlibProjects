@@ -1,3 +1,3 @@
 #pragma once
 
-static int glovalScore=0;
+static int glovalScore = 0;

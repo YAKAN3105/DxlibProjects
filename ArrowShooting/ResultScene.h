@@ -1,6 +1,7 @@
 #pragma once
 #include "Score.h"
 
+
 class ResultScene
 {
 public:
@@ -8,7 +9,7 @@ public:
 	~ResultScene();
 	void Init();
 	int Update();
-	void Draw(Score& score);
+	void Draw();
 private:
 	int m_handle;
 	int m_fontHandle;

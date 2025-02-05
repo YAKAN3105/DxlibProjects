@@ -9,6 +9,7 @@ public:
 	void Init();
 	void Update();
 	void Draw();
+	void ScoreSetUp();
 	int GetScore() { return glovalScore; }
 private:
 	int m_score;
