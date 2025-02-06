@@ -71,6 +71,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 
 		}
+
+		if (CheckHitKey(KEY_INPUT_ESCAPE))
+		{
+			break;
+		}
 	}
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理

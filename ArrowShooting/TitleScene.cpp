@@ -15,7 +15,7 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
-	m_handle1 = LoadGraph("data/Title.png");
+	m_handle1 = LoadGraph("Title.png");
 	m_handle2 = LoadGraph("data/block1.jpg");
 }
 
