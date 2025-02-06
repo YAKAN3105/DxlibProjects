@@ -9,6 +9,11 @@ Map::Map()
 
 Map::~Map()
 {
+	DeleteGraph(_blockHandle);
+	DeleteGraph(_ceilingHandle);
+	DeleteGraph(_wallHandle);
+	DeleteGraph(_backgroundHandle);
+	DeleteGraph(_goalHandle);
 }
 
 void Map::Init()
@@ -50,5 +55,14 @@ void Map::Draw()
 			
 		}
 	}
+}
+
+void Map::End()
+{
+	DeleteGraph(_blockHandle);
+	DeleteGraph(_ceilingHandle);
+	DeleteGraph(_wallHandle);
+	DeleteGraph(_backgroundHandle);
+	DeleteGraph(_goalHandle);
 }
 

@@ -45,6 +45,11 @@ void GameScene::Draw()
 	m_enemy.Draw();
 }
 
+void GameScene::End()
+{
+	m_map.End();
+}
+
 bool GameScene::IsColision()
 {
 	// プレイヤーとエネミーが当たった判定をとる

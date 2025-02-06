@@ -13,6 +13,7 @@ public:
 	void Init();
 	void Update();
 	void Draw();
+	void End();
 
 	Rect GetRect() const { return m_rect; }
 private:

@@ -11,6 +11,7 @@ public:
 	void Init();
 	int Update();
 	void Draw();
+	void End();
 	bool IsColision();
 private:
 	Map m_map;
