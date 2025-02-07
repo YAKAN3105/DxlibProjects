@@ -53,8 +53,11 @@ void Player::Update()
 	}
 	AnimRoop();
 	Move();
-	Jump();
 	Gravity();
+	if (m_hp > 0)
+	{
+		Jump();
+	}
 	if (m_hp <= 0)
 	{
 		UpdateDead();
